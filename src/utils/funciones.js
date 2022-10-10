@@ -1,3 +1,8 @@
+import { ref } from "vue";
+import { useReziseMap } from "@/stores/store";
+
+const { mapaAncho, mapaAlto } = useReziseMap();
+
 export const aleatorio = (min, max) => {
   // Generar un número aleatorio entre dos números, inclusives
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -48,6 +53,16 @@ export const crearMokepon = (
   moke.mapaImagen.src = moke.imagen;
 
   return moke;
+};
+
+export const ubicarMokepon = (mokepon) => {
+  mokepon.x = aleatorio(10, mapaAncho.value - mokepon.ancho);
+  mokepon.y = aleatorio(10, mapaAlto.value - mokepon.alto);
+};
+
+export const ajustarTamanoMokepon = (mokepon) => {
+  mokepon.ancho = (mapaAncho.value * 100) / 800;
+  mokepon.alto = (mapaAncho.value * 100) / 800;
 };
 
 export const dibujarMokepon = (mokepon, lienzo) => {

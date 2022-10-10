@@ -23,9 +23,7 @@ const saludar = () => {
 // const { jugadores, cant } = storeToRefs(mokeponStore);
 // const { increment } = mokeponStore;
 
-// const { cant } = toRef(store, 'cant')
-
-console.log("Jugadores desde Mapa:", store.jugadores)
+// console.log("Jugadores desde Mapa:", store.jugadores)
 // console.log("Jugadores en Store:", jugadores.value)
 
 
@@ -44,5 +42,13 @@ console.log("Jugadores desde Mapa:", store.jugadores)
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@media (max-width: 360px) {
+    #ver-mapa :deep(div) {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 }
 </style>

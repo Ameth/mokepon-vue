@@ -21,13 +21,21 @@ const router = createRouter({
         requireMoke: true,
       },
     },
+    {
+      path: "/battle",
+      name: "batalla",
+      component: () => import("../views/CombateView.vue"),
+      meta: {
+        requireMoke: true,
+      },
+    },
   ],
 });
 
 router.beforeEach((to, from) => {
   // console.log("from", from);
   // console.log("to", to);
-  console.log("Cuenta actual:", store.jugadores.length);
+  // console.log("Cuenta actual:", store.jugadores.length);
   // if (to.name == "about") {
   //   // return { name: "sesion" };
   //   return false;

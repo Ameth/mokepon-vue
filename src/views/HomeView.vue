@@ -1,8 +1,9 @@
 <script setup>
-import { ref, computed, watch, toRef } from 'vue';
+import { ref, computed, watch, toRef, reactive } from 'vue';
 import { RouterLink, useRouter } from 'vue-router'
 import TarjetaMokeponVue from '@/components/TarjetaMokepon.vue';
-import Mokepon from '@/utils/Mokepon.js'
+// import Mokepon from '@/utils/Mokepon.js'
+import { crearMokepon, ubicarMokepon } from '@/utils/funciones.js'
 import { ataquesHipodoge, ataquesCapipepo, ataquesRatigueya } from '@/utils/ataques.js'
 // import { useMokeponStore } from '@/stores/mokeponStore.js'
 import { store } from '@/stores/store.js'
@@ -14,22 +15,21 @@ const router = useRouter()
 const mokepones = [];
 const mascotaActual = ref('')
 
-// const {unirseAlJuego} = toRef(store, 'jugadores')
-
-const hipodoge = new Mokepon(
+const hipodoge = crearMokepon(
   "Hipodoge",
   "/src/assets/tierra.png",
   5,
   ataquesHipodoge
 );
 
-const capipepo = new Mokepon(
+const capipepo = crearMokepon(
   "Capipepo",
   "/src/assets/agua.png",
   5,
   ataquesCapipepo
 );
-const ratigueya = new Mokepon(
+
+const ratigueya = crearMokepon(
   "Ratigueya",
   "/src/assets/fuego.png",
   5,
@@ -42,9 +42,11 @@ const seleccionarMascota = () => {
   const seleccion = mokepones.find((mascota) => mascota.nombre === mascotaActual.value);
   if (seleccion) {
     store.unirseAlJuego(seleccion)
+    ubicarMokepon(seleccion)
+    // ajustarTamanoMokepon(seleccion)
     // mokeponStore.unirseAlJuego(seleccion.nombre)
-    console.log("Jugadores desde Home:", store.jugadores.length);
-    console.log("Listado desde Home:", store.jugadores);
+    // console.log("Jugadores desde Home:", store.jugadores.length);
+    // console.log("Listado desde Home:", store.jugadores);
     router.push({ name: 'map' })
   } else {
     alert("Debe seleccionar una mascota")
@@ -70,7 +72,6 @@ watch(mascotaActual, (newValue) => { console.log("Seleccionada:", newValue) })
         v-model="mascotaActual" />
     </div>
     <button id="boton-mascota" @click="seleccionarMascota">¡A jugar!</button>
-
   </section>
 </template>
 
