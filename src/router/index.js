@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import { store } from "@/stores/store.js";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,20 +24,21 @@ const router = createRouter({
   ],
 });
 
-// router.beforeEach((to, from) => {
-//   console.log("from", from);
-//   console.log("to", to);
-//   // if (to.name == "about") {
-//   //   // return { name: "sesion" };
-//   //   return false;
-//   // }
-//   if (to.meta.requireMoke) {
-//     // to.meta.requiresAuth = false;
-//     return {
-//       name: "home",
-//     };
-//   }
-//   return true;
-// });
+router.beforeEach((to, from) => {
+  // console.log("from", from);
+  // console.log("to", to);
+  console.log("Cuenta actual:", store.jugadores.length);
+  // if (to.name == "about") {
+  //   // return { name: "sesion" };
+  //   return false;
+  // }
+  if (to.meta.requireMoke && store.jugadores.length == 0) {
+    // to.meta.requiresAuth = false;
+    return {
+      name: "home",
+    };
+  }
+  return true;
+});
 
 export default router;

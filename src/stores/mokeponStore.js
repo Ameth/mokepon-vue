@@ -4,11 +4,15 @@ import { ref, computed } from "vue";
 export const useMokeponStore = defineStore("mokepon", () => {
   const jugadores = ref([]);
 
+  const cant = ref(0);
+
   const unirseAlJuego = (nombre) => {
-    jugadores.value.push({
-      nombre,
-    });
+    jugadores.value.push(nombre);
   };
 
-  return { jugadores, unirseAlJuego };
+  const increment = () => {
+    cant.value++;
+  };
+
+  return { jugadores, unirseAlJuego, cant, increment };
 });

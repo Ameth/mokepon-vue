@@ -2,21 +2,33 @@
     <section id="ver-mapa">
         <h1 class="titulo">Recorre el mapa con tu Mokepon!</h1>
         <Mapa />
-        <button onmouseup="detenerMovimiento()" ontouchend="detenerMovimiento()" onmousedown="moverArriba()"
-            ontouchstart="moverArriba()">🔺</button>
-        <div>
-            <button onmouseup="detenerMovimiento()" ontouchend="detenerMovimiento()" onmousedown="moverIzquierda()"
-                ontouchstart="moverIzquierda()">◀</button>
-            <button onmouseup="detenerMovimiento()" ontouchend="detenerMovimiento()" onmousedown="moverAbajo()"
-                ontouchstart="moverAbajo()">🔻</button>
-            <button onmouseup="detenerMovimiento()" ontouchend="detenerMovimiento()" onmousedown="moverDerecha()"
-                ontouchstart="moverDerecha()">▶</button>
-        </div>
+        <button @click="saludar">Saludar</button>
     </section>
 </template>
 
 <script setup>
 import Mapa from '@/components/Mapa.vue'
+import { toRef, ref, onMounted } from 'vue';
+// import { useMokeponStore } from '@/stores/mokeponStore.js'
+// import { storeToRefs } from "pinia";
+import { store } from '@/stores/store.js'
+import { wsSetDisplayName } from '@/services/socket.js'
+
+const saludar = () => {
+    wsSetDisplayName("Hola socket")
+}
+
+// const mokeponStore = useMokeponStore();
+
+// const { jugadores, cant } = storeToRefs(mokeponStore);
+// const { increment } = mokeponStore;
+
+// const { cant } = toRef(store, 'cant')
+
+console.log("Jugadores desde Mapa:", store.jugadores)
+// console.log("Jugadores en Store:", jugadores.value)
+
+
 
 </script>
 
@@ -32,21 +44,5 @@ import Mapa from '@/components/Mapa.vue'
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-#ver-mapa button {
-    width: 80px;
-    height: 40px;
-    border-radius: 8px;
-    background: transparent;
-    border: 2px solid white;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    font-size: 20px;
-    margin-top: 10px;
-}
-
-#ver-mapa button:hover {
-    background-color: #5d8bf4;
 }
 </style>

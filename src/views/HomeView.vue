@@ -1,15 +1,20 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
-import { RouterLink } from 'vue-router'
+import { ref, computed, watch, toRef } from 'vue';
+import { RouterLink, useRouter } from 'vue-router'
 import TarjetaMokeponVue from '@/components/TarjetaMokepon.vue';
 import Mokepon from '@/utils/Mokepon.js'
 import { ataquesHipodoge, ataquesCapipepo, ataquesRatigueya } from '@/utils/ataques.js'
-import { useMokeponStore } from '@/stores/mokeponStore.js'
-import { storeToRefs } from "pinia";
+// import { useMokeponStore } from '@/stores/mokeponStore.js'
+import { store } from '@/stores/store.js'
+// import { storeToRefs } from "pinia";
+
+const router = useRouter()
+// const mokeponStore = useMokeponStore();
 
 const mokepones = [];
+const mascotaActual = ref('')
 
-const mokeponStore = useMokeponStore();
+// const {unirseAlJuego} = toRef(store, 'jugadores')
 
 const hipodoge = new Mokepon(
   "Hipodoge",
@@ -33,11 +38,19 @@ const ratigueya = new Mokepon(
 
 mokepones.push(hipodoge, capipepo, ratigueya);
 
-// const seleccionarMascota = (nombre) => {
-//   console.log(nombre)
-// }
+const seleccionarMascota = () => {
+  const seleccion = mokepones.find((mascota) => mascota.nombre === mascotaActual.value);
+  if (seleccion) {
+    store.unirseAlJuego(seleccion)
+    // mokeponStore.unirseAlJuego(seleccion.nombre)
+    console.log("Jugadores desde Home:", store.jugadores.length);
+    console.log("Listado desde Home:", store.jugadores);
+    router.push({ name: 'map' })
+  } else {
+    alert("Debe seleccionar una mascota")
+  }
+}
 
-const mascotaActual = ref('')
 // const textButton = computed(() => {
 //   return mascotaActual.value !== "" ? `¡A jugar con mi ${mascotaActual.value}` : "¡A jugar!";
 // })
@@ -56,7 +69,7 @@ watch(mascotaActual, (newValue) => { console.log("Seleccionada:", newValue) })
       <TarjetaMokeponVue v-for="(mokepon, index) in mokepones" :key="index" :mokepon="mokepon"
         v-model="mascotaActual" />
     </div>
-    <button id="boton-mascota" @click="$router.push('/map')">¡A jugar!</button>
+    <button id="boton-mascota" @click="seleccionarMascota">¡A jugar!</button>
 
   </section>
 </template>
