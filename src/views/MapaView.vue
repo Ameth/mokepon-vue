@@ -2,7 +2,6 @@
     <section id="ver-mapa">
         <h1 class="titulo">Recorre el mapa con tu Mokepon!</h1>
         <Mapa />
-        <button @click="saludar">Saludar</button>
     </section>
 </template>
 

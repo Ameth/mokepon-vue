@@ -24,7 +24,15 @@ export function wsUnirseAlJuego(mokepon) {
 }
 
 export function wsActualizarPosicion(pos) {
-  socket.emit("pos", { ...pos, id: socket.id });
+  socket.emit("pos", { ...pos });
+}
+
+export function wsEnviarAtaque(ataque) {
+  socket.emit("atacar", ataque);
+}
+
+export function wsReiniciarJuego(id) {
+  socket.emit("reset", id);
 }
 
 // export function wsRecibirPosicion() {

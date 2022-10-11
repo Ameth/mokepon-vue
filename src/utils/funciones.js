@@ -27,15 +27,9 @@ export const moverConTeclado = (event) => {
   }
 };
 
-export const crearMokepon = (
-  nombre,
-  imagen,
-  vidas,
-  ataques = [],
-  id = null
-) => {
+export const crearMokepon = (nombre, imagen, vidas, ataques = []) => {
   const moke = {
-    id,
+    id: (Math.random() + 1) * Math.random(),
     nombre,
     imagen,
     vidas,

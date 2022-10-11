@@ -95,14 +95,15 @@ function enviarPosicionEnLinea(x, y) {
 
     wsActualizarPosicion({
         posX: x,
-        posY: y
+        posY: y,
+        id: mascotaJugador.id
     })
 }
 
 socket.on("allPos", (enemigos) => {
     mokeponesEnemigos = enemigos.filter((enemigo) => {
         // console.log("Mis enemigos:", enemigos);
-        if (enemigo.id !== socket.id) {
+        if (enemigo.id !== mascotaJugador.id) {
             const nombreMokepon = enemigo.nombre;
             let mokeponEnemigo;
             if (nombreMokepon === "Hipodoge") {

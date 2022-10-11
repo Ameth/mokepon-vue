@@ -29,6 +29,7 @@ export const useReziseMap = () => {
 export const store = reactive({
   jugadores: [],
   miEnemigo: null,
+  indexAtak: 0,
   unirseAlJuego(nombre) {
     this.jugadores.push(nombre);
   },
@@ -36,19 +37,3 @@ export const store = reactive({
     return this.jugadores[0];
   },
 });
-
-// export const store = () => {
-//   const jugadores = ref([]);
-
-//   const miEnemigo = ref(null);
-
-//   function unirseAlJuego(nombre) {
-//     jugadores.value.push(nombre);
-//   }
-
-//   return {
-//     jugadores,
-//     miEnemigo,
-//     unirseAlJuego,
-//   };
-// };
