@@ -1,29 +1,33 @@
-# mokepon-vue
+# Mokepon Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+[Ver en vivo](https://mokepon-vue-ameth.netlify.app/)
 
-## Recommended IDE Setup
+Servidor de tiempo real: [mokepon-vue-socket-server](https://github.com/Ameth/mokepon-vue-socket-server)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Descripción
 
-## Customize configuration
+Proyecto de un juego en línea desarrollado en Vue3 + Vite, utilizando Socket.io para el mecanismo de tiempo real.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Configuración
 
-## Project Setup
+#### Instalación de dependencias
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+#### Ejecutar en modo de desarrollo
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+#### Compilar para producción
 
 ```sh
 npm run build
 ```
+
+## Licencia
+
+![](https://img.shields.io/badge/licence-MIT-green)

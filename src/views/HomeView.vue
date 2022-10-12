@@ -5,6 +5,7 @@ import TarjetaMokeponVue from '@/components/TarjetaMokepon.vue';
 import { crearMokepon, ubicarMokepon, datasession } from '@/utils/funciones.js'
 import { ataquesHipodoge, ataquesCapipepo, ataquesRatigueya } from '@/utils/ataques.js'
 import { store } from '@/stores/store.js'
+import IconGit from '@/components/IconGit.vue'
 // import { wsReiniciarJuego } from '@/services/socket.js'
 
 const router = useRouter()
@@ -79,6 +80,9 @@ watch(mascotaActual, (newValue) => { console.log("Seleccionada:", newValue) })
         v-model="mascotaActual" />
     </div>
     <button id="boton-mascota" @click="seleccionarMascota">¡A jugar!</button>
+    <div>
+      <IconGit />
+    </div>
   </section>
 </template>
 
