@@ -57,7 +57,7 @@ onMounted(() => {
 .tarjeta-de-mokepon {
     width: 180px;
     height: 100px;
-    background: #11468f;
+    background: #27a36d;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 20px;
@@ -77,6 +77,6 @@ input {
 }
 
 input:checked+label {
-    background-color: #5d8bf4;
+    background-color: #96ce82;
 }
 </style>

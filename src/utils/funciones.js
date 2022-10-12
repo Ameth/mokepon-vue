@@ -70,3 +70,23 @@ export const dibujarMokepon = (mokepon, lienzo) => {
     mokepon.alto
   );
 };
+
+// export const datasession = (nombre, valor = undefined) => {
+//   if (valor) {
+//     sessionStorage.setItem(nombre, valor);
+//   } else {
+//     return sessionStorage.getItem(nombre);
+//   }
+// };
+
+export const datasession = {
+  setItem(nombre, valor) {
+    sessionStorage.setItem(nombre, valor);
+  },
+  getItem(nombre) {
+    return sessionStorage.getItem(nombre);
+  },
+  removeItem(nombre) {
+    sessionStorage.removeItem(nombre);
+  },
+};

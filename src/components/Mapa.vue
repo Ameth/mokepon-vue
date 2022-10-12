@@ -14,7 +14,7 @@ import { RouterLink, useRouter } from 'vue-router'
 import { ataquesHipodoge, ataquesCapipepo, ataquesRatigueya } from '@/utils/ataques.js'
 import { store } from '@/stores/store.js'
 import { wsUnirseAlJuego, wsActualizarPosicion, onSocket } from '@/services/socket.js'
-import { crearMokepon, dibujarMokepon } from '@/utils/funciones.js'
+import { crearMokepon, dibujarMokepon, datasession } from '@/utils/funciones.js'
 import { useReziseMap } from '@/stores/store.js'
 
 const router = useRouter()
@@ -38,6 +38,7 @@ const { mapaAncho, mapaAlto } = useReziseMap()
 const mascotaJugador = store.jugadores[0];
 // console.log("Objeto mascota:", mascotaJugador);
 wsUnirseAlJuego(mascotaJugador)
+// datasession.setItem("id_moke", mascotaJugador.id)
 
 // console.log({ ...mascotaJugador, ataques: [...mascotaJugador.ataques] });
 
@@ -274,6 +275,6 @@ button {
 }
 
 button:hover {
-    background-color: #5d8bf4;
+    background-color: #96ce82;
 }
 </style>

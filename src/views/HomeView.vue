@@ -1,13 +1,11 @@
 <script setup>
-import { ref, computed, watch, toRef, reactive } from 'vue';
-import { RouterLink, useRouter } from 'vue-router'
+import { ref, watch, } from 'vue';
+import { useRouter } from 'vue-router'
 import TarjetaMokeponVue from '@/components/TarjetaMokepon.vue';
-// import Mokepon from '@/utils/Mokepon.js'
-import { crearMokepon, ubicarMokepon } from '@/utils/funciones.js'
+import { crearMokepon, ubicarMokepon, datasession } from '@/utils/funciones.js'
 import { ataquesHipodoge, ataquesCapipepo, ataquesRatigueya } from '@/utils/ataques.js'
-// import { useMokeponStore } from '@/stores/mokeponStore.js'
 import { store } from '@/stores/store.js'
-// import { storeToRefs } from "pinia";
+// import { wsReiniciarJuego } from '@/services/socket.js'
 
 const router = useRouter()
 // const mokeponStore = useMokeponStore();
@@ -52,6 +50,15 @@ const seleccionarMascota = () => {
     alert("Debe seleccionar una mascota")
   }
 }
+
+// onMounted(() => {
+//   const moke = datasession.getItem("id_moke")
+//   if (moke) {
+//     console.log("Desconectar:", moke);
+//     datasession.removeItem("id_moke")
+//     wsReiniciarJuego(moke)
+//   }
+// }),
 
 // const textButton = computed(() => {
 //   return mascotaActual.value !== "" ? `¡A jugar con mi ${mascotaActual.value}` : "¡A jugar!";
