@@ -6,6 +6,7 @@
         <button @mousedown="moverAbajo" @mouseup="detenerMovimiento">🔻</button>
         <button @mousedown="moverDerecha" @mouseup="detenerMovimiento">▶</button>
     </div>
+    <button id="boton-salir" @click="toHome">Salir</button>
 </template>
 
 <script setup>
@@ -41,6 +42,11 @@ wsUnirseAlJuego(mascotaJugador)
 // datasession.setItem("id_moke", mascotaJugador.id)
 
 // console.log({ ...mascotaJugador, ataques: [...mascotaJugador.ataques] });
+
+const toHome = () => {
+    clearInterval(intervalo);
+    router.push({ name: 'home' })
+}
 
 onMounted(() => {
     // console.log(mapa.value);
@@ -257,8 +263,6 @@ function revisarColision(mascotaEnemigoActual) {
     //   sectionSeleccionarAtaque.style.display = "flex";
 }
 
-
-
 </script>
 
 <style scoped>
@@ -276,5 +280,15 @@ button {
 
 button:hover {
     background-color: #96ce82;
+}
+
+#boton-salir {
+    width: 100px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border-color: #154404;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
 }
 </style>
