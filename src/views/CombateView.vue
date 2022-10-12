@@ -165,7 +165,7 @@ onMounted(() => {
 
 <template>
     <section id="seleccionar-ataque">
-        <h1 class="titulo">MOKEPON!</h1>
+        <h1 class="titulo">{{store.title}}</h1>
 
         <h2 class="subtitulo">Elige tu ataque:</h2>
 

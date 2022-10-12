@@ -70,7 +70,7 @@ watch(mascotaActual, (newValue) => { console.log("Seleccionada:", newValue) })
 
 <template>
   <section id="seleccionar-mascota">
-    <h1 class="titulo">MOKEPON!</h1>
+    <h1 class="titulo">{{store.title}}</h1>
 
     <h2 class="subtitulo">Elige tu Mokepon:</h2>
 

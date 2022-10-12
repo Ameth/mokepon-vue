@@ -27,6 +27,7 @@ export const useReziseMap = () => {
 };
 
 export const store = reactive({
+  title: "MOKEPON VUE!",
   jugadores: [],
   miEnemigo: null,
   indexAtak: 0,
