@@ -45,6 +45,8 @@ wsUnirseAlJuego(mascotaJugador)
 
 const toHome = () => {
     clearInterval(intervalo);
+    store.jugadores = []
+    socket.emit("reset", mascotaJugador.id)
     router.push({ name: 'home' })
 }
 
@@ -108,6 +110,9 @@ function enviarPosicionEnLinea(x, y) {
 }
 
 socket.on("allPos", (enemigos) => {
+    if (enemigos.length == 0) {
+        toHome()
+    }
     mokeponesEnemigos = enemigos.filter((enemigo) => {
         // console.log("Mis enemigos:", enemigos);
         if (enemigo.id !== mascotaJugador.id) {

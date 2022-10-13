@@ -143,6 +143,7 @@ const combateEnLinea = () => {
 }
 
 const reset = () => {
+    store.jugadores = []
     wsReiniciarJuego(mascotaJugador.id)
     router.push({ name: 'home' })
 }

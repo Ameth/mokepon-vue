@@ -1,7 +1,8 @@
 import { ref } from "vue";
 import { io } from "socket.io-client";
 
-const socket = io("https://mokepon-socket.herokuapp.com/");
+const socket = io("http://localhost:3000/");
+// const socket = io("https://mokepon-socket.herokuapp.com/");
 
 socket.on("connect", () => {
   console.log(`connect ${socket.id}`);
